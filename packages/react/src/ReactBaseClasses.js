@@ -153,7 +153,7 @@ function PureComponent(props, context, updater) {
 }
 /** 
  * PureComponent 的使用和 Component 一致，只时最后为其添加了一个 isPureReactComponent 属性。
- * ComponentDummy 就是通过原型模拟继承的方式将 Component 原型中的方法和属性传递给了 PureComponent。
+ * ComponentDummy 就是通过原型继承的方式将 Component 原型中的方法和属性传递给了 PureComponent。
  * 同时为了避免原型链拉长导致属性查找的性能消耗，通过 Object.assign 把属性从 Component 拷贝了过来。
 */
 const pureComponentPrototype = (PureComponent.prototype = new ComponentDummy());
