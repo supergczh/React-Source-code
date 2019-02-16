@@ -272,6 +272,8 @@ function checkShouldComponentUpdate(
     return shouldUpdate;
   }
 
+ // 这里根据 PureComponent 设置的属性 isPureReactComponent 判断一下，如果是 PureComponent，就会走里面的代码，将比较的值返回出去
+
   if (ctor.prototype && ctor.prototype.isPureReactComponent) {
     return (
       !shallowEqual(oldProps, newProps) || !shallowEqual(oldState, newState)
