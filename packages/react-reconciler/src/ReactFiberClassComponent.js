@@ -20,6 +20,7 @@ import {
 import ReactStrictModeWarnings from './ReactStrictModeWarnings';
 import {isMounted} from 'react-reconciler/reflection';
 import {get as getInstance, set as setInstance} from 'shared/ReactInstanceMap';
+//share包的工具方法
 import shallowEqual from 'shared/shallowEqual';
 import getComponentName from 'shared/getComponentName';
 import invariant from 'shared/invariant';
@@ -241,6 +242,9 @@ const classComponentUpdater = {
   },
 };
 
+/** 
+ * 这里根据上面 PureComponent 设置的属性 isPureReactComponent 判断一下，如果是 PureComponent，就会走里面的代码，将比较的值返回出去
+*/
 function checkShouldComponentUpdate(
   workInProgress,
   ctor,
@@ -283,7 +287,7 @@ function checkShouldComponentUpdate(
   return true;
 }
 
-function checkClassInstance(workInProgress: Fiber, ctor: any, newProps: any) {
+function checkClassInstance(workInProgress:Fiber, ctor:any, newProps:any) {
   const instance = workInProgress.stateNode;
   if (__DEV__) {
     const name = getComponentName(ctor) || 'Component';
